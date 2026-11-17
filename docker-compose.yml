@@ -1,0 +1,14 @@
+services:
+  pdf-compressor:
+    build: .
+    env_file: .env
+    ports:
+      - "8000:8000"
+    volumes:
+      - compression_jobs:/data/jobs
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    restart: unless-stopped
+
+volumes:
+  compression_jobs:
